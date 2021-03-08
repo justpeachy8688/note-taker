@@ -1,3 +1,11 @@
+/*NOTES
+1.create html routes
+- `GET/notes` - notes.html
+- `GET*` - index.html
+
+2. 
+*/
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
