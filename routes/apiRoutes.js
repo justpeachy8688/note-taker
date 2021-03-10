@@ -5,12 +5,14 @@ const path = require('path')
 
 //API for rendering notes stored on db
 module.exports = (app) => {
+    var oldNote = JSON.parse(fs.readFile(path.join(__dirname, "../db/db.json"), "utf-8"))
+
     app.get('/api/notes', (req, res) => {
-        res.sendFile(path.join(__dirname, "../db/db.json")
-        )
+        return res.json(oldNote);
     }
     )
 }
+
 
 //TO-DO
 
