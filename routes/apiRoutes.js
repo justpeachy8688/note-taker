@@ -9,9 +9,15 @@ function getNoteList() {
 }
 
 module.exports = (app) => {
+    //GET
     app.get('/api/notes', (req, res) => {
         return res.json(getNoteList());
     });
+
+    // //POST
+    // app.post('/api/notes', (req, res) => {
+    //     console.log('Posted!')
+    // })
 };
 
 
