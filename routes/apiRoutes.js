@@ -4,13 +4,15 @@ const { v4: uuidv4 } = require('uuid');
 const path = require('path')
 
 //API for rendering notes stored on db
-module.exports = (app) => {
-    var noteList = JSON.parse(fs.readFile(path.join(__dirname, "../db/db.json"), "utf-8"))
-    app.get('/api/notes', (req, res) => {
-        return res.json(noteList);
-    }
-    )
+function getNoteList() {
+    return JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf-8"))
 }
+
+module.exports = (app) => {
+    app.get('/api/notes', (req, res) => {
+        return res.json(getNoteList());
+    });
+};
 
 
 //TO-DO
