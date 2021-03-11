@@ -16,9 +16,6 @@
 <a href="#installation">Installation</a>
 </li>
 <li>
-<a href="#tests">Tests</a>
-</li>
-<li>
 <a href="#usage">Usage</a>
 </li>
 <li>
@@ -37,17 +34,16 @@
 
 An application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
 
+
+![Example Screenshot](public/assets/images/note-taker-pic.png)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps. You can also download the source files provided. You will need a text editor such as Visual Studio Code.
 
 ## Installation
 
-Clone this repo: github.com/justpeachy8688/professional-README-generator to your local device. Use npm i to install dependencies.
-
-## Tests
-
-If you would like to test this project, run npm test.
+Clone this repo: github.com/justpeachy8688/note-taker to your local device. Use npm i to install dependencies.
 
 ## Usage
 
