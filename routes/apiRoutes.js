@@ -11,8 +11,6 @@ function getNoteList() {
 }
 console.log(getNoteList());
 
-// var notes = JSON.parse(data);
-
 module.exports = (app) => {
     //GET
     app.get('/api/notes', (req, res) => {
@@ -38,16 +36,16 @@ module.exports = (app) => {
     });
 
     //DELETE
-    app.delete('/api/notes/:id', (req, res) => {
-        //get current notes getNoteList
-        //assign to variable
-        //loop over each note and check id
-        //.filter method currentNotes.filter
-        var currentNotes = getNoteList()
-        var id = req.params.id;
-        console.log(id)
-        res.json(id)
-    })
+    // app.delete('/api/notes/:id', (req, res) => {
+    //     //get current notes getNoteList
+    //     //assign to variable
+    //     //loop over each note and check id
+    //     //.filter method currentNotes.filter
+    //     var currentNotes = getNoteList()
+    //     var id = req.params.id;
+    //     console.log(id)
+    //     res.json(id)
+    // })
 
     function updateDb(currentNotes) {
         fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(currentNotes, '\t'), err => {
@@ -57,11 +55,3 @@ module.exports = (app) => {
     }
 
 };
-
-
-//TO-DO
-//POST notes
-//1. get data from our request req.body save in a variable
-//2. read the file and display data in a variable from json file
-//3. combine notes from json(array) attach or append our variable to that array
-//4. write it to our json file
