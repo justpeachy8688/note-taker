@@ -35,7 +35,7 @@ module.exports = (app) => {
 
     });
 
-    //DELETE
+    //BONUS ** DELETE METHOD
     // app.delete('/api/notes/:id', (req, res) => {
     //     //get current notes getNoteList
     //     //assign to variable
