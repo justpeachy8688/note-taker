@@ -1,4 +1,6 @@
 const note = require('../db/db.json');
+// console.log("\n\n\nnote: ", note);
+// console.log("I am here")
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const path = require('path')
@@ -7,6 +9,9 @@ const path = require('path')
 function getNoteList() {
     return JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf-8"))
 }
+console.log(getNoteList());
+
+// var notes = JSON.parse(data);
 
 module.exports = (app) => {
     //GET
@@ -14,23 +19,47 @@ module.exports = (app) => {
         return res.json(getNoteList());
     });
 
-    // //POST
-    // app.post('/api/notes', (req, res) => {
-    //     console.log('Posted!')
-    // })
+    //POST
+    app.post('/api/notes', (req, res) => {
+        console.log("Hello error")
+        //GETS THE req.body
+        let newNote = {
+            id: uuidv4(),
+            ...req.body
+        }
+
+        // PUSH THE NEW NOTE INTO THE ARRAY
+        var currentNotes = getNoteList()
+        currentNotes.push(newNote);
+        //REWRITE THE DB.JSON FILE WITH THE UPDATED ARRAY
+        updateDb(currentNotes);
+        res.json(currentNotes);
+
+    });
+
+    //DELETE
+    app.delete('/api/notes/:id', (req, res) => {
+        //get current notes getNoteList
+        //assign to variable
+        //loop over each note and check id
+        //.filter method currentNotes.filter
+        var currentNotes = getNoteList()
+        var id = req.params.id;
+        console.log(id)
+        res.json(id)
+    })
+
+    function updateDb(currentNotes) {
+        fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(currentNotes, '\t'), err => {
+            if (err) throw err;
+            return true;
+        });
+    }
+
 };
 
 
 //TO-DO
-
-//1. GET the notes
-//2. read the file and display the data
-//3. then save it to variable
-//4. when saving toi a variable we may have to parse it
-//5. return the variable
-//6. run npm run watch during this step
-//7. npm run start
-
 //POST notes
 //1. get data from our request req.body save in a variable
 //2. read the file and display data in a variable from json file
